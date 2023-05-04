@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
   <title>To-Do List Web App By mrcbq</title>
-<script defer src="main.js"></script></head>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+
 <body>
-  <h1>Todo Do List App</h1>
-  <ul id="todo-container"></ul>
+
+  <h1 title="Demo">To-Do List</h1>
+
+  <div id="todo-container">
+    <form>
+      <input type="text" value="Today's To Do">
+      <input class="input-btn-ccw" type="button" tabindex="-1" value="">
+    </form>
+
+    <form>
+      <input placeholder="Add to your list..." type="text">
+      <input class="input-sbt-enter" type="submit" tabindex="-1" value="" title="click this or press enter to submit">
+    </form>
+
+    <ul id="tasks-container">
+      <!-- <li>
+        <input alt="Check!" tabindex="0" type="checkbox"></input>
+        <textarea maxlength="255"></textarea>
+        <input class="input-btn-dots" type="button" tabindex="-1" value="" title="click and sostain for rearrange">
+      </li> -->
+    </ul>
+
+    <button id="clear-btn" type="button">Clear all completed</button>
+  </div>
+
 </body>
+
 </html>

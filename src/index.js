@@ -1,3 +1,5 @@
+import './index.css';
+
 const tasks = [
   {
     id: 0,
@@ -16,10 +18,40 @@ const tasks = [
   },
 ];
 
+const tasksContainer = document.getElementById('tasks-container');
+
 tasks.forEach((task) => {
-  const li = document.createElement('li');
-  li.setAttribute('id', task.id);
-  li.innerHTML = `
-  hello
-  `;
+  const listItem = document.createElement('li');
+  const checkbox = document.createElement('input');
+  const textarea = document.createElement('input');
+  const dotsButton = document.createElement('input');
+
+  checkbox.setAttribute('type', 'checkbox');
+  checkbox.setAttribute('tabindex', '0');
+  checkbox.setAttribute('alt', 'Check!');
+
+  textarea.setAttribute('maxlength', '255');
+  textarea.value = task.description;
+
+  dotsButton.setAttribute('type', 'button');
+  dotsButton.setAttribute('tabindex', '-1');
+  dotsButton.setAttribute('value', '');
+  dotsButton.setAttribute('title', 'click and sostain for rearrange');
+  dotsButton.classList.add('input-btn-dots');
+
+  textarea.addEventListener('click', () => {
+    dotsButton.classList.add('active');
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!textarea.contains(event.target)) {
+      dotsButton.classList.remove('active');
+    }
+  });
+
+  listItem.appendChild(checkbox);
+  listItem.appendChild(textarea);
+  listItem.appendChild(dotsButton);
+
+  tasksContainer.appendChild(listItem);
 });
