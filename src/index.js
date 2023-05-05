@@ -1,57 +1,86 @@
 import './index.css';
+import {
+  addTask,
+  deleteTask,
+  editTask,
+  updateTasks,
+  toggleCompleted,
+} from './methods.js';
+import tasksObj from './tasks.js';
 
-const tasks = [
-  {
-    id: 0,
-    description: 'wash the dishes',
-    completed: false,
-  },
-  {
-    id: 1,
-    description: 'Complete the to-do list project',
-    completed: false,
-  },
-  {
-    id: 2,
-    description: 'take a rest',
-    completed: true,
-  },
-];
+let tasks = updateTasks();
 
 const tasksContainer = document.getElementById('tasks-container');
+function renderTasks() {
+  tasksContainer.innerHTML = '';
+  tasks.forEach((task, idx) => {
+    const listItem = document.createElement('li');
+    const checkbox = document.createElement('input');
+    const textarea = document.createElement('input');
+    const dotsButton = document.createElement('input');
 
-tasks.forEach((task) => {
-  const listItem = document.createElement('li');
-  const checkbox = document.createElement('input');
-  const textarea = document.createElement('input');
-  const dotsButton = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('tabindex', '0');
+    checkbox.setAttribute('alt', 'Check!');
+    checkbox.checked = task.completed;
 
-  checkbox.setAttribute('type', 'checkbox');
-  checkbox.setAttribute('tabindex', '0');
-  checkbox.setAttribute('alt', 'Check!');
+    textarea.setAttribute('maxlength', '255');
+    textarea.value = task.description;
 
-  textarea.setAttribute('maxlength', '255');
-  textarea.value = task.description;
+    const attrs = {
+      type: 'button',
+      tabindex: '-1',
+      value: '',
+      title: 'click and sostain for rearrange',
+      class: 'input-btn-dots',
+    };
 
-  dotsButton.setAttribute('type', 'button');
-  dotsButton.setAttribute('tabindex', '-1');
-  dotsButton.setAttribute('value', '');
-  dotsButton.setAttribute('title', 'click and sostain for rearrange');
-  dotsButton.classList.add('input-btn-dots');
+    Object.entries(attrs).forEach(([key, value]) => {
+      dotsButton.setAttribute(key, value);
+    });
 
-  textarea.addEventListener('click', () => {
-    dotsButton.classList.add('active');
+    listItem.appendChild(checkbox);
+    listItem.appendChild(textarea);
+    listItem.appendChild(dotsButton);
+
+    tasksContainer.appendChild(listItem);
+
+    textarea.addEventListener('input', () => {
+      editTask(idx + 1, textarea.value);
+    });
+
+    checkbox.addEventListener('change', () => {
+      toggleCompleted(idx + 1);
+      renderTasks();
+    });
+
+    dotsButton.addEventListener('click', () => {
+      deleteTask(idx + 1);
+      renderTasks();
+    });
   });
+}
 
-  document.addEventListener('click', (event) => {
-    if (!textarea.contains(event.target)) {
-      dotsButton.classList.remove('active');
-    }
+document.getElementById('clear-btn').addEventListener('click', () => {
+  const filteredTasks = tasks.filter((task) => task.completed === false);
+  filteredTasks.forEach((task, index) => {
+    task.id = index + 1;
   });
-
-  listItem.appendChild(checkbox);
-  listItem.appendChild(textarea);
-  listItem.appendChild(dotsButton);
-
-  tasksContainer.appendChild(listItem);
+  tasks = filteredTasks;
+  tasksObj.setTasks(filteredTasks);
+  tasks = tasksObj.getTasks();
+  renderTasks();
 });
+
+const inputList = document.getElementById('input-list');
+const form = document.getElementById('form-input');
+form.addEventListener('submit', () => {
+  const description = inputList.value;
+  if (description !== '') {
+    addTask(description);
+    inputList.value = '';
+    renderTasks();
+  }
+});
+
+renderTasks();

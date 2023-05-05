@@ -45,16 +45,19 @@ li > input {
   background-image: url('./assets/images/enter.svg');
 }
 
-.input-btn-dots {
+input:not(:focus) + .input-btn-dots {
   width: 1.5rem;
   height: 1.5rem;
   background-image: url('./assets/images/icon-more-vert.svg');
 }
 
-.input-btn-dots.active {
+input:focus + .input-btn-dots,
+input:focus + .input-btn-dots:hover,
+input:not(:focus) + .input-btn-dots:hover {
   width: 1.5rem;
   height: 1.5rem;
   background-image: url('./assets/images/delete.svg');
+  transition: 2s ease;
 }
 
 form,
@@ -85,4 +88,9 @@ li {
 #clear-btn:hover {
   text-decoration: underline;
   color: black;
+}
+
+input[type="checkbox"]:checked + input {
+  text-decoration: line-through;
+  color: #a2a2a2;
 }
