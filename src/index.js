@@ -7,7 +7,6 @@ import {
   toggleCompleted,
   filterTasks,
 } from './methods.js';
-import tasksObj from './tasks.js';
 
 const tasksContainer = document.getElementById('tasks-container');
 function renderTasks() {
