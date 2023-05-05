@@ -5,13 +5,12 @@ import {
   editTask,
   updateTasks,
   toggleCompleted,
+  filterTasks,
 } from './methods.js';
-import tasksObj from './tasks.js';
-
-let tasks = updateTasks();
 
 const tasksContainer = document.getElementById('tasks-container');
 function renderTasks() {
+  const tasks = updateTasks();
   tasksContainer.innerHTML = '';
   tasks.forEach((task, idx) => {
     const listItem = document.createElement('li');
@@ -62,13 +61,7 @@ function renderTasks() {
 }
 
 document.getElementById('clear-btn').addEventListener('click', () => {
-  const filteredTasks = tasks.filter((task) => task.completed === false);
-  filteredTasks.forEach((task, index) => {
-    task.id = index + 1;
-  });
-  tasks = filteredTasks;
-  tasksObj.setTasks(filteredTasks);
-  tasks = tasksObj.getTasks();
+  filterTasks();
   renderTasks();
 });
 
