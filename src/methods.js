@@ -47,6 +47,18 @@ function toggleCompleted(id) {
   updateTasks();
 }
 
+const filterTasks = () => {
+  // let tasks = updateTasks();
+  const filteredTasks = tasks.filter((task) => task.completed === false);
+  filteredTasks.forEach((task, index) => {
+    task.id = index + 1;
+  });
+  tasks = filteredTasks;
+  tasksObj.setTasks(filteredTasks);
+  tasks = tasksObj.getTasks();
+  updateTasks();
+};
+
 export {
-  updateTasks, addTask, deleteTask, editTask, toggleCompleted,
+  updateTasks, addTask, deleteTask, editTask, toggleCompleted, filterTasks,
 };
