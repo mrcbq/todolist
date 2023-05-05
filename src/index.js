@@ -46,7 +46,7 @@ function renderTasks() {
     tasksContainer.appendChild(listItem);
 
     textarea.addEventListener('input', () => {
-      editTask(idx, textarea.value);
+      editTask(idx + 1, textarea.value);
     });
 
     checkbox.addEventListener('change', () => {

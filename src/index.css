@@ -89,3 +89,8 @@ li {
   text-decoration: underline;
   color: black;
 }
+
+input[type="checkbox"]:checked + input {
+  text-decoration: line-through;
+  color: #a2a2a2;
+}
