@@ -11,7 +11,7 @@ function updateTasks() {
 function addTask(description) {
   tasks = tasksObj.getTasks();
   const newTask = {
-    id: tasks.length,
+    id: tasks.length + 1,
     description,
     completed: false,
   };
@@ -25,7 +25,7 @@ function deleteTask(id) {
   if (taskIndex !== -1) {
     tasks.splice(taskIndex, 1);
     tasks.forEach((task, index) => {
-      task.id = index;
+      task.id = index + 1;
     });
     updateTasks();
   }

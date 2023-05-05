@@ -1,16 +1,16 @@
 let tasks = JSON.parse(localStorage.getItem('tasks')) ?? [
   {
-    id: 0,
+    id: 1,
     description: 'wash the dishes',
     completed: false,
   },
   {
-    id: 1,
+    id: 2,
     description: 'Complete the to-do list project',
     completed: false,
   },
   {
-    id: 2,
+    id: 3,
     description: 'take a rest',
     completed: true,
   },

@@ -50,12 +50,12 @@ function renderTasks() {
     });
 
     checkbox.addEventListener('change', () => {
-      toggleCompleted(idx);
+      toggleCompleted(idx + 1);
       renderTasks();
     });
 
     dotsButton.addEventListener('click', () => {
-      deleteTask(idx);
+      deleteTask(idx + 1);
       renderTasks();
     });
   });
@@ -64,7 +64,7 @@ function renderTasks() {
 document.getElementById('clear-btn').addEventListener('click', () => {
   const filteredTasks = tasks.filter((task) => task.completed === false);
   filteredTasks.forEach((task, index) => {
-    task.id = index;
+    task.id = index + 1;
   });
   tasks = filteredTasks;
   tasksObj.setTasks(filteredTasks);
