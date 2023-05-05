@@ -48,7 +48,6 @@ function toggleCompleted(id) {
 }
 
 const filterTasks = () => {
-  // let tasks = updateTasks();
   const filteredTasks = tasks.filter((task) => task.completed === false);
   filteredTasks.forEach((task, index) => {
     task.id = index + 1;
