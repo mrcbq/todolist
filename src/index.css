@@ -1,14 +1,17 @@
+/* Reset styles */
 * {
   margin: 0;
   padding: 0;
 }
 
+/* Body styles */
 body h1 {
   padding: 3rem;
   text-align: center;
   font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
 }
 
+/* To-do container styles */
 #todo-container {
   margin: 0 auto;
   display: flex;
@@ -17,49 +20,42 @@ body h1 {
   width: 60%;
 }
 
+/* Input styles */
 input {
   background-color: rgb(255, 255, 255);
   height: 2rem;
   margin: 0.1rem;
-}
-
-input,
-textarea {
   border: none;
-  resize: none;
 }
 
-li > input {
+/* Button styles */
+.input-btn-ccw,
+.input-sbt-enter,
+.input-btn-dots {
+  width: 1.5rem;
   height: 1.5rem;
 }
 
 .input-btn-ccw {
-  width: 1.5rem;
-  height: 1.5rem;
   background-image: url('./assets/images/arrow-ccw.svg');
 }
 
 .input-sbt-enter {
-  width: 1.5rem;
-  height: 1.5rem;
   background-image: url('./assets/images/enter.svg');
 }
 
 input:not(:focus) + .input-btn-dots {
-  width: 1.5rem;
-  height: 1.5rem;
   background-image: url('./assets/images/icon-more-vert.svg');
 }
 
 input:focus + .input-btn-dots,
 input:focus + .input-btn-dots:hover,
 input:not(:focus) + .input-btn-dots:hover {
-  width: 1.5rem;
-  height: 1.5rem;
   background-image: url('./assets/images/delete.svg');
   transition: 2s ease;
 }
 
+/* Form and list item styles */
 form,
 li {
   padding: 0.3rem;
@@ -79,6 +75,7 @@ li {
   list-style: none;
 }
 
+/* Clear button styles */
 #clear-btn {
   height: 3rem;
   color: #a2a2a2;
@@ -90,6 +87,7 @@ li {
   color: black;
 }
 
+/* Checkbox styles */
 input[type="checkbox"]:checked + input {
   text-decoration: line-through;
   color: #a2a2a2;
