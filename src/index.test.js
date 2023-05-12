@@ -8,7 +8,6 @@ const dom = new JSDOM('<!doctype html><html><body></body></html>');
 global.document = dom.window.document;
 global.window = dom.window;
 
-// const tasksContainer = dom.window.document.getElementById('tasks-container');
 const tasksContainer = document.createElement('ul');
 // Tests that renderTasks function renders all tasks in the tasks array.
 it('test_render_tasks_renders_all_tasks', () => {
