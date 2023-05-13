@@ -3,6 +3,7 @@ import {
   deleteTask,
   editTask,
   filterTasks,
+  toggleCompleted,
   updateTasks,
 } from './methods.js';
 import tasksObj from './tasks.js';
@@ -122,5 +123,25 @@ describe('clear completed Tasks', () => {
     expect(filteredTasks.length).toBe(2);
     expect(filteredTasks[0].id).toBe(1);
     expect(filteredTasks[1].id).toBe(2);
+  });
+});
+describe('Update Comple Status', () => {
+  test('updating an item completed status', () => {
+    // Arrange
+    const id = 1;
+    const initialTasks = [
+      { id: 1, description: 'Task 1', completed: false },
+      { id: 2, description: 'Task 2', completed: true },
+      { id: 3, description: 'Task 3', completed: false },
+    ];
+    tasksObj.setTasks(initialTasks);
+
+    // Act
+    toggleCompleted(id);
+    const updatedTasks = tasksObj.getTasks();
+    const updatedTask = updatedTasks.find((task) => task.id === id);
+
+    // Assert
+    expect(updatedTask.completed).toBe(true);
   });
 });
