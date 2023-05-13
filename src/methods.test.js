@@ -1,5 +1,4 @@
-// import 'jest-localstorage-mock';
-import { addTask, deleteTask } from './methods.js';
+import { addTask, deleteTask, editTask } from './methods.js';
 import tasksObj from './tasks.js';
 
 describe('addTask()', () => {
@@ -72,5 +71,43 @@ describe('deleteTask()', () => {
     // Assert
     const updatedTasks = tasksObj.getTasks();
     expect(updatedTasks.length).toBe(3);
+  });
+});
+
+describe(editTask, () => {
+  test('test_edit_task_with_valid_id_and_description', () => {
+    // Arrange
+    const initialTasks = [
+      { id: 1, description: 'Task 1', completed: false },
+      { id: 2, description: 'Task 2', completed: true },
+      { id: 3, description: 'Task 3', completed: false },
+    ];
+    tasksObj.setTasks(initialTasks);
+    const newDescription = 'New Task Description';
+
+    // Act
+    editTask(2, newDescription);
+    const updatedTasks = tasksObj.getTasks();
+    const updatedTask = updatedTasks.find((task) => task.id === 2);
+
+    // Assert
+    expect(updatedTask.description).toBe(newDescription);
+  });
+  test('test_edit_task_with_invalid_id', () => {
+    // Arrange
+    const initialTasks = [
+      { id: 1, description: 'Task 1', completed: false },
+      { id: 2, description: 'Task 2', completed: true },
+      { id: 3, description: 'Task 3', completed: false },
+    ];
+    tasksObj.setTasks(initialTasks);
+    const newDescription = 'New Task Description';
+
+    // Act
+    editTask(4, newDescription);
+    const updatedTasks = tasksObj.getTasks();
+
+    // Assert
+    expect(updatedTasks).toEqual(initialTasks);
   });
 });
