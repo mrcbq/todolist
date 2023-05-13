@@ -107,7 +107,7 @@ describe('editTask', () => {
   });
 });
 
-describe('clear completed Tasks', () => {
+describe('Clear Completed Tasks', () => {
   test('test_clear_tasks_with_incomplete_tasks', () => {
     // Arrange
     const incompleteTasks = [
@@ -125,7 +125,7 @@ describe('clear completed Tasks', () => {
     expect(filteredTasks[1].id).toBe(2);
   });
 });
-describe('Update Comple Status', () => {
+describe('Update Complete Status', () => {
   test('updating an item completed status', () => {
     // Arrange
     const id = 1;
@@ -143,23 +143,47 @@ describe('Update Comple Status', () => {
     expect(updatedTask.completed).toBe(true);
   });
 });
-// Tests that renderTasks function correctly displays tasks in the correct order.
-test('test_render_tasks_order', () => {
-  // Arrange
-  const tasksContainer = document.createElement('li');
-  tasksContainer.setAttribute('id', 'tasks-container');
-  document.body.appendChild(tasksContainer);
-  const tasks = [
-    { id: 1, description: 'Task 1', completed: true },
-    { id: 2, description: 'Task 2', completed: true },
-    { id: 3, description: 'Task 3', completed: false },
-  ];
-  tasksObj.setTasks(tasks);
-  // Act
-  renderTasks();
-  // Assert
-  const renderedTasks = document.querySelectorAll('#tasks-container li');
-  expect(renderedTasks.length).toBe(3);
-  // Clean up
-  document.body.removeChild(tasksContainer);
+describe('Render Task', () => {
+  test('test_render_tasks_order', () => {
+    // Arrange
+    const tasksContainer = document.createElement('li');
+    tasksContainer.setAttribute('id', 'tasks-container');
+    document.body.appendChild(tasksContainer);
+    const tasks = [
+      { id: 1, description: 'Task 1', completed: true },
+      { id: 2, description: 'Task 2', completed: true },
+      { id: 3, description: 'Task 3', completed: false },
+    ];
+    tasksObj.setTasks(tasks);
+    // Act
+    renderTasks();
+    // Assert
+    const renderedTasks = document.querySelectorAll('#tasks-container li');
+    expect(renderedTasks.length).toBe(3);
+    // Clean up
+    document.body.removeChild(tasksContainer);
+  });
+  test('test_render_tasks_reorder_after_completion', () => {
+    // Arrange
+    const tasksContainer = document.createElement('li');
+    tasksContainer.setAttribute('id', 'tasks-container');
+    document.body.appendChild(tasksContainer);
+    const tasks = [
+      { id: 1, description: 'Task 1', completed: false },
+      { id: 2, description: 'Task 2', completed: false },
+      { id: 3, description: 'Task 3', completed: false },
+    ];
+    tasksObj.setTasks(tasks);
+    // Act
+    toggleCompleted(2);
+    renderTasks();
+    // Assert
+    const renderedTasks = document.querySelectorAll('#tasks-container li');
+    expect(renderedTasks.length).toBe(3);
+    expect(renderedTasks[0].querySelector('input[type="checkbox"]').checked).toBe(false);
+    expect(renderedTasks[1].querySelector('input[type="checkbox"]').checked).toBe(true);
+    expect(renderedTasks[2].querySelector('input[type="checkbox"]').checked).toBe(false);
+    // Clean up
+    document.body.removeChild(tasksContainer);
+  });
 });
