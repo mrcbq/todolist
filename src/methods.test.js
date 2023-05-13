@@ -1,4 +1,4 @@
-import 'jest-localstorage-mock';
+// import 'jest-localstorage-mock';
 import { addTask, deleteTask } from './methods.js';
 import tasksObj from './tasks.js';
 

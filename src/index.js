@@ -9,7 +9,8 @@ import {
 } from './methods.js';
 
 const tasksContainer = document.getElementById('tasks-container');
-function renderTasks() {
+
+export default function renderTasks() {
   const tasks = updateTasks();
   tasksContainer.innerHTML = '';
   tasks.forEach((task, idx) => {
@@ -60,13 +61,15 @@ function renderTasks() {
   });
 }
 
-document.getElementById('clear-btn').addEventListener('click', () => {
+const clearBtn = document.getElementById('clear-btn');
+clearBtn.addEventListener('click', () => {
   filterTasks();
   renderTasks();
 });
 
 const inputList = document.getElementById('input-list');
 const form = document.getElementById('form-input');
+
 form.addEventListener('submit', () => {
   const description = inputList.value;
   if (description !== '') {
@@ -77,3 +80,5 @@ form.addEventListener('submit', () => {
 });
 
 renderTasks();
+
+export { renderTasks };

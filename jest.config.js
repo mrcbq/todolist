@@ -1,5 +1,5 @@
 module.exports = {
-  testEnvironment: 'jest-environment-jsdom',
+  testEnvironment: 'jsdom',
   transformIgnorePatterns: [
     '/node_modules/',
     '^.+\\.src\\.(css|sass|scss)$',
