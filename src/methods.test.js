@@ -4,7 +4,6 @@ import {
   editTask,
   filterTasks,
   toggleCompleted,
-  updateTasks,
 } from './methods.js';
 import tasksObj from './tasks.js';
 
@@ -135,12 +134,10 @@ describe('Update Comple Status', () => {
       { id: 3, description: 'Task 3', completed: false },
     ];
     tasksObj.setTasks(initialTasks);
-
     // Act
     toggleCompleted(id);
     const updatedTasks = tasksObj.getTasks();
     const updatedTask = updatedTasks.find((task) => task.id === id);
-
     // Assert
     expect(updatedTask.completed).toBe(true);
   });
