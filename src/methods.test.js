@@ -3,6 +3,7 @@ import {
   deleteTask,
   editTask,
   filterTasks,
+  renderTasks,
   toggleCompleted,
 } from './methods.js';
 import tasksObj from './tasks.js';
@@ -141,4 +142,24 @@ describe('Update Comple Status', () => {
     // Assert
     expect(updatedTask.completed).toBe(true);
   });
+});
+// Tests that renderTasks function correctly displays tasks in the correct order.
+test('test_render_tasks_order', () => {
+  // Arrange
+  const tasksContainer = document.createElement('li');
+  tasksContainer.setAttribute('id', 'tasks-container');
+  document.body.appendChild(tasksContainer);
+  const tasks = [
+    { id: 1, description: 'Task 1', completed: true },
+    { id: 2, description: 'Task 2', completed: true },
+    { id: 3, description: 'Task 3', completed: false },
+  ];
+  tasksObj.setTasks(tasks);
+  // Act
+  renderTasks();
+  // Assert
+  const renderedTasks = document.querySelectorAll('#tasks-container li');
+  expect(renderedTasks.length).toBe(3);
+  // Clean up
+  document.body.removeChild(tasksContainer);
 });
