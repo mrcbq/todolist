@@ -19,5 +19,4 @@ form.addEventListener('submit', (e) => {
     renderTasks();
   }
 });
-
 renderTasks();
