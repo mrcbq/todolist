@@ -1,5 +1,4 @@
 let tasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
-
 const tasksObj = {
   getTasks() {
     return tasks;
