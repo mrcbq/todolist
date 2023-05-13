@@ -1,20 +1,4 @@
-let tasks = JSON.parse(localStorage.getItem('tasks')) ?? [
-  {
-    id: 1,
-    description: 'wash the dishes',
-    completed: false,
-  },
-  {
-    id: 2,
-    description: 'Complete the to-do list project',
-    completed: false,
-  },
-  {
-    id: 3,
-    description: 'take a rest',
-    completed: true,
-  },
-];
+let tasks = JSON.parse(localStorage.getItem('tasks')) ?? [];
 
 const tasksObj = {
   getTasks() {
