@@ -135,6 +135,12 @@ GH Pages, publish the branch in git Hub pages
 - Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
+👤 **Abiy Hussen**
+
+- GitHub: [@abiy006](https://github.com/abiy006)
+- Twitter: [@twitterhandle](https://twitter.com/#)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/#)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
