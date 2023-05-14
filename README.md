@@ -99,9 +99,9 @@ https://github.com/mrcbq/todolist.git
 
 <!-- Install this project with: -->
 
-Clone this repository to your desired folder:
+To install this project, run the following command:
 
-https://github.com/mrcbq/todolist.git
+npm install
 
 ### Usage
 
@@ -113,14 +113,13 @@ git clone https://github.com/mrcbq/todolist.git
 
 To run tests, run the following command:
 
-No implemented yet.
+npm test
 
 ### Deployment
 
 You can deploy this project using:
 
-GH Pages, publish the branch in git Hub pages
-
+npm run deploy
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -135,11 +134,11 @@ GH Pages, publish the branch in git Hub pages
 - Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
 
-👤 **Abiy Hussen**
+👤 **Abiy Hussen Aman**
 
-- GitHub: [@abiy006](https://github.com/abiy006)
-- Twitter: [@twitterhandle](https://twitter.com/#)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/#)
+- GitHub: [@Abiy Github](https://github.com/abiy006)
+- Twitter: [@Abit Twitter](https://twitter.com/Abiy62463489)
+- LinkedIn: [@Abit LinkedIn](https://www.linkedin.com/in/abiy-hussen-aman-194587183/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
